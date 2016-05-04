@@ -1,6 +1,6 @@
 <style type="text/css">
 	*{
-		color: black;
+		color: white;
 	}	
 </style>
 
