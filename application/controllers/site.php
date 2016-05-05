@@ -6,9 +6,6 @@ class Site extends CI_Controller{
 		$is_logged_in = $this->session->userdata('is_logged_in');
 		$role	= $this->session->userdata('role');
 
-		//echo $username . " " . $is_logged_in . " " . $role;
-		//exit;
-
 		if(isset($username, $is_logged_in, $role)){
 			if($role == 'member'){
 				$this->load->model('set_karya');
@@ -16,18 +13,14 @@ class Site extends CI_Controller{
 				'title' 	=> 'Input Karya',
 				'content' 	=> 'input_karya'
 				);
-			//	echo "<h1>sdfjh world!!!!</h1>";
 			} else{
 				$this->load->model('set_karya');
 				$data = array(
 					'title' 	=> 'Admin Area',
 					'content' 	=> 'admin_area'
 				);
-			//	echo "<h1>ioerjiog!!!!</h1>";
-				//$this->inputk();
 			}
 		}else{
-			//echo "<h1>Hello world!!!!</h1>";
 
 				$this->load->model('set_karya');
 				if($this->input->post('upload')){
@@ -77,16 +70,6 @@ class Site extends CI_Controller{
 			$this->load->view('includes/template',$data);
 	}
 
-	function inputk(){
-		$this->load->model('set_karya');
-
-		$data = array(
-			'title' 		=> 'Input Karya',
-			'content' 		=> 'input_karya'
-		);
-		$this->load->view('includes/template', $data);
-	}
-
 	function validate_credentials(){
 		$this->load->model('set_karya');
 		$query = $this->set_karya->validate();
@@ -125,7 +108,7 @@ class Site extends CI_Controller{
 				$this->index();	
 			}
 			else{
-				echo 'apalah';
+				echo 'The Account is not match';
 			}
 		}
 	}
