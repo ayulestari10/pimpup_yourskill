@@ -6,8 +6,8 @@ class Site extends CI_Controller{
 		$is_logged_in = $this->session->userdata('is_logged_in');
 		$role	= $this->session->userdata('role');
 
-		echo $username . " " . $is_logged_in . " " . $role;
-		exit;
+		//echo $username . " " . $is_logged_in . " " . $role;
+		//exit;
 
 		if(isset($username, $is_logged_in, $role)){
 			if($role == 'member'){
@@ -16,18 +16,18 @@ class Site extends CI_Controller{
 				'title' 	=> 'Input Karya',
 				'content' 	=> 'input_karya'
 				);
-				echo "<h1>sdfjh world!!!!</h1>";
+			//	echo "<h1>sdfjh world!!!!</h1>";
 			} else{
 				$this->load->model('set_karya');
 				$data = array(
 					'title' 	=> 'Admin Area',
 					'content' 	=> 'admin_area'
 				);
-				echo "<h1>ioerjiog!!!!</h1>";
+			//	echo "<h1>ioerjiog!!!!</h1>";
 				//$this->inputk();
 			}
 		}else{
-			echo "<h1>Hello world!!!!</h1>";
+			//echo "<h1>Hello world!!!!</h1>";
 
 				$this->load->model('set_karya');
 				if($this->input->post('upload')){
@@ -96,7 +96,7 @@ class Site extends CI_Controller{
 			$data= array(
 				'username' => $this->input->post('username'),
 				'is_logged_in' => true,
-				'role'	=> $this->input->post('member')
+				'role'	=> $this->session->userdata('role')
 			);
 
 			$this->session->set_userdata($data);
