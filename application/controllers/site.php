@@ -16,56 +16,58 @@ class Site extends CI_Controller{
 			} else{
 				$this->load->model('set_karya');
 				$data = array(
-				'title' 	=> 'Admin Area',
-				'content' 	=> 'admin_area'
+					'title' 	=> 'Admin Area',
+					'content' 	=> 'admin_area'
 				);
 				//$this->inputk();
 			}
 		}else{
-			$this->load->model('set_karya');
-			if($this->input->post('upload')){
-				$this->set_karya->do_upload();
-			}
+			echo "<h1>Hello world!!!!</h1>";
 
-			$this->load->library('pagination');
-			$this->load->library('table');
+				$this->load->model('set_karya');
+				if($this->input->post('upload')){
+					$this->set_karya->do_upload();
+				}
 
-			$config['base_url'] = 'http://karyailkom.azurewebsites.net/index.php/site/tampilan'; 
-			$config['total_rows'] = $this->db->query("SELECT *FROM input_karya")->num_rows();
-			if ($config['total_rows'] > 5) {
-				$config['total_rows'] = $config['total_rows'] - 5;
-			}
-			$config['per_page'] = 8;
-			$config['num_links'] = 20;
-			$config['full_tag_open'] = '<div><ul class="pagination pagination-small pagination-centered">';
-			$config['full_tag_close'] = '</ul></div>';
-			$config['num_tag_open'] = '<li>';
-			$config['num_tag_close'] = '</li>';
-			$config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
-			$config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
-			$config['next_tag_open'] = "<li>";
-			$config['next_tagl_close'] = "</li>";
-			$config['prev_tag_open'] = "<li>";
-			$config['prev_tagl_close'] = "</li>";
-			$config['first_tag_open'] = "<li>";
-			$config['first_tagl_close'] = "</li>";
-			$config['last_tag_open'] = "<li>";
-			$config['last_tagl_close'] = "</li>";
+				$this->load->library('pagination');
+				$this->load->library('table');
+
+				$config['base_url'] = 'http://karyailkom.azurewebsites.net/index.php/site/tampilan'; 
+				$config['total_rows'] = $this->db->query("SELECT *FROM input_karya")->num_rows();
+				if ($config['total_rows'] > 5) {
+					$config['total_rows'] = $config['total_rows'] - 5;
+				}
+				$config['per_page'] = 8;
+				$config['num_links'] = 20;
+				$config['full_tag_open'] = '<div><ul class="pagination pagination-small pagination-centered">';
+				$config['full_tag_close'] = '</ul></div>';
+				$config['num_tag_open'] = '<li>';
+				$config['num_tag_close'] = '</li>';
+				$config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
+				$config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
+				$config['next_tag_open'] = "<li>";
+				$config['next_tagl_close'] = "</li>";
+				$config['prev_tag_open'] = "<li>";
+				$config['prev_tagl_close'] = "</li>";
+				$config['first_tag_open'] = "<li>";
+				$config['first_tagl_close'] = "</li>";
+				$config['last_tag_open'] = "<li>";
+				$config['last_tagl_close'] = "</li>";
 
 
-			$this->pagination->initialize($config); 
-			
-			$data['records'] = $this->db->get('input_karya', $config['per_page'], $this->uri->segment(3));
-			$data['pagination'] = $this->pagination->create_links();
-			$data['table'] = $this->table->generate($data['records']);
-			$data['images'] =  $this->set_karya->get_images();
-			$data['page_data'] = $this->uri->segment(3);
-			if (!isset($data['page_data'])) {
-				$data['page_data'] = 0;
-			} 
+				$this->pagination->initialize($config); 
+				
+				$data['records'] = $this->db->get('input_karya', $config['per_page'], $this->uri->segment(3));
+				$data['pagination'] = $this->pagination->create_links();
+				$data['table'] = $this->table->generate($data['records']);
+				$data['images'] =  $this->set_karya->get_images();
+				$data['page_data'] = $this->uri->segment(3);
+				if (!isset($data['page_data'])) {
+					$data['page_data'] = 0;
+				} 
 
-			$data['title'] = 'Karya Ilkom';
-			$data['content'] = 'tampilan';
+				$data['title'] = 'Karya Ilkom';
+				$data['content'] = 'tampilan';
 			}
 			$this->load->view('includes/template',$data);
 	}
