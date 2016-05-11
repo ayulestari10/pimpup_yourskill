@@ -6,6 +6,9 @@ class Site extends CI_Controller{
 		$is_logged_in = $this->session->userdata('is_logged_in');
 		$role	= $this->session->userdata('role');
 
+		echo $username . " " . $is_logged_in . " " . $role;
+		exit;
+
 		if(isset($username, $is_logged_in, $role)){
 			if($role == 'member'){
 				$this->load->model('set_karya');

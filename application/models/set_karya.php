@@ -49,7 +49,7 @@ class Set_karya extends CI_Model{
 		}
 	}
 
-	function create_member(){- 
+	function create_member(){
 		$is_member = $this->input->post('member');
 		if ($is_member) {
 			$role = "member";
