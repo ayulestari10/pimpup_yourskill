@@ -13,12 +13,14 @@ class Site extends CI_Controller{
 				'title' 	=> 'Input Karya',
 				'content' 	=> 'input_karya'
 				);
+				echo "<h1>sdfjh world!!!!</h1>";
 			} else{
 				$this->load->model('set_karya');
 				$data = array(
 					'title' 	=> 'Admin Area',
 					'content' 	=> 'admin_area'
 				);
+				echo "<h1>ioerjiog!!!!</h1>";
 				//$this->inputk();
 			}
 		}else{
