@@ -19,7 +19,7 @@ class Site extends CI_Controller{
 				'title' 	=> 'Admin Area',
 				'content' 	=> 'admin_area'
 				);
-				$this->inputk();
+				//$this->inputk();
 			}
 		}else{
 			$this->load->model('set_karya');
